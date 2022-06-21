@@ -1,0 +1,28 @@
+package pl.lublin.wsei.java.cwiczenia.lab6;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        NoblistaBuilder nb = new NoblistaBuilder();
+        nb.readFile();
+        ArrayList<Noblista> listaNoblistow = nb.getList();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("noblista-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 572, 350);
+        stage.setTitle("Noblista");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
